@@ -1,0 +1,118 @@
+LARAVEL BY SAEPULFARIZ
+
+composer create-project laravel/laravel laravel_wpu
+
+
+composer create-project laravel/laravel {directory} 4.2 --prefer-dist
+
+composer global require "laravel/installer=~1.1"
+
+
+Extention
+Laravel Artisan
+
+
+ctrl + shift + p
+command pallet
+artisan: make Model
+
+Post
+migration
+No
+Factory 
+No
+Controller 
+No
+
+
+>> bikin controller
+PostController
+>>> basic
+>>> resouce
+>>> api
+
+
+>> klik kanan expand class
+
+++++++++++++++++++
+6. Database Migration, Eloquent
+
+APP_ENV
+local
+development
+production
+
+DB_DATABASE laravel_wpu_blog
+
+laravel udah ada migration bawaan
+\database\migrations
+php artisan migrate
+
+ada 4 buah table, 1 table migration kayak .git bisa lacak perubahan
+
+ada methode up buat create table
+down buat menghilang kan
+php artisan migrate:rollback
+
+drop dulu baru buat table
+fresh ketika mau ubah skema
+php artisan migrate:fresh
+
+
+ketika ENV production 
+ada notif ketika mau migration
+
+
+Eloquent ORM
+Objek relational Mapper
+
+Active record pattern
+database di bungkus class == model
+1 data 1 object
+
+TINKER adalah aplikasi dalam php
+php artisan tinker
+
+class blueprint
+fillable yang harus di isi
+
+
+1 baris user berinisiasi dengan 1 model 
+
+$user = new \App\Models\User;
+$uer = new User;
+$user->name = 'Saepulfariz'
+$user->email = 'saepulhidayat302@gmail.com'
+$user->password = bcrypt('123')
+$user->save();
+
+
+// ambil data
+$user->all();
+udah bentuk collection
+
+
+kalau bikin baru 
+$user = new User();
+$user->name = 'zail'
+$user->email = 'zail@gmail.com'
+$user->password = bcrypt('123')
+$user->save();
+
+$user->find(2)
+
+// cara cari sambil ada errornya
+$user->findOrFail(3)
+
+++++++++++++++++++++++++++++++++++++++++++=
+
+
+
+
+
+
+
+
+
+
+
