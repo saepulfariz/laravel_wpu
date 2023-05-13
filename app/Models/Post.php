@@ -2,51 +2,35 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Post
+class Post extends Model
 {
-    // properties statis bisa di akses di class ini ajah 
-    private static $blog_posts = [
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Saepulfariz",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo asperiores maxime reiciendis cumque, deserunt, nemo aperiam itaque at nulla laborum doloremque consequuntur molestias expedita sequi ipsum recusandae sed! Qui atque ea at, incidunt eos porro aut error quas esse ducimus iusto officia quod quibusdam expedita, nobis rem pariatur unde ullam autem. Natus iusto possimus voluptates mollitia nostrum, quae aliquam maxime ad dolores! Similique adipisci iusto excepturi nostrum, sequi recusandae in optio id cumque asperiores neque laborum minus eum eius perferendis."
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Zail",
-            "body" => "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, libero magnam? A quos magni pariatur omnis nobis, accusamus rem fugiat vel, perferendis vitae eum similique aut debitis sint facilis quia minima nam, laboriosam illo officiis dicta! Nostrum iusto eius voluptate cum magni dicta quo cumque repudiandae totam. Sed iure doloremque quisquam obcaecati deleniti nihil repellat iste quam enim reiciendis nisi tenetur ipsum quae consequuntur dolorum labore sunt placeat harum dicta, aut quaerat veritatis incidunt ratione magnam? Praesentium aspernatur aperiam repellendus nam ipsum minima voluptas inventore commodi expedita assumenda! Explicabo saepe dolorum ratione ipsa voluptatem quas rem perspiciatis assumenda provident obcaecati."
-        ]
-    ];
+    use HasFactory;
 
-    // method static 
-    public static function all()
-    {
-        // kalau properti static pake self::properti
+    // kalau gak di isi maka akan ambil otomatis dari default nya
+    // timestamps
+    // protected $fillable = ['title', 'excerpt', 'body'];
 
-        // collection pembungkus array biar jadi sakti
-        return collect(self::$blog_posts);
-    }
+    // apa yang di isi biar gak nambain mulu ke fillable
+    protected $guarded = ['id'];
+    // tipe mess asgement ketika update
+    // bisa berubah karena gak fillable nya selain id
 
+    // $post::create([
+    //     'title' => 'Judul Ke Empat',
+    //     'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+    //     'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+    // ])
 
-    public static function find($slug)
-    {
-        // static::method buat panggil methode static
-        $posts = static::all();
+    // where id = 3
+    // Post::find(3)->update([
+    //     'title' => 'Judul Ke Tiga Berubah'
+    // ])
 
-        // jika slug parameter sama dengan slug di array maka kirimkan
-        // $post = [];
-        // foreach ($posts as $p) {
-        //     if ($p['slug'] == $slug) {
-        //         $post = $p;
-        //     }
-        // }
-
-        // return $post;
-
-        // ambil 1 data dengan where slug
-        return $posts->firstWhere('slug', $slug);
-    }
+    // ubah berdasarkan where title akan mengembalika berapa baris yang kerubah
+    // $post->where('title', 'Judul Ke Tiga Berubah')->update([
+    //     'excerpt'=> 'excerpt berubah'
+    // ])
 }

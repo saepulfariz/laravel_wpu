@@ -36,7 +36,11 @@ Route::get('/about', function () {
 Route::get('/posts', [PostController::class, 'Index']);
 
 
-Route::get('/posts/{slug}', [PostController::class, 'Show']);
+// Route::get('/posts/{slug}', [PostController::class, 'Show']);
+// kirim post sesuai dengan nama model nya
+// kalau tulis post ajah maka akan cari uniq id 
+// Route::get('/posts/{post}', [PostController::class, 'Show']);
+Route::get('/posts/{post:slug}', [PostController::class, 'Show']);
 
 
 Route::get('/welcome', function () {

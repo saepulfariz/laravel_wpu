@@ -107,7 +107,123 @@ $user->findOrFail(3)
 ++++++++++++++++++++++++++++++++++++++++++=
 
 
+bikin sekali dua
+php artisan make:model 
 
+buat help didepan
+php artisan help make:model 
+
+
+php artisan make:model -f -m -c
+
+bikin 2 file model dan migration
+singular
+jamak posts
+php artisan make:model -m Post
+
+bisa pake php artisan tinker buat coba
+
+$post = new \App\Models\Post()
+$post->title = 'Judul Pertama'
+$post->excerpt = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas ratione ipsa neque minus dolores nisi aspernatur, eaque libero praesentium magni labore temporibus ut repudiandae? Delectus quia deserunt consequuntur doloremque, perferendis quam repellendus ducimus doloribus non magnam veniam ipsam culpa, facere, ratione rerum minus voluptas mollitia molestias natus quaerat eveniet similique voluptatem ipsum aliquam. Illum, omnis aut ab assumenda laudantium nobis cumque aperiam. Ducimus earum, deserunt facilis explicabo quis tempore praesentium nam voluptate quidem accusantium, quasi ex deleniti nulla modi illo? Iusto, totam, praesentium facere harum impedit maiores cum debitis, distinctio non animi repellat sit deserunt tenetur quo deleniti reiciendis nisi.'
+
+$post->body = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas ratione ipsa neque minus dolores nisi aspernatur, eaque libero praesentium magni labore temporibus ut repudiandae? Delectus quia deserunt consequuntur doloremque, perferendis quam repellendus ducimus doloribus non magnam veniam ipsam culpa, facere, ratione rerum minus voluptas mollitia molestias natus quaerat eveniet similique voluptatem ipsum aliquam. Illum, omnis aut ab assumenda laudantium nobis cumque aperiam. Ducimus earum, deserunt facilis explicabo quis tempore praesentium nam voluptate quidem accusantium, quasi ex deleniti nulla modi illo? Iusto, totam, praesentium facere harum impedit maiores cum debitis, distinctio non animi repellat sit deserunt tenetur quo deleniti reiciendis nisi.'
+
+$post->save();
+
+
+// ambil title nya ajah
+Post::pluck('title')
+
+Post::find(2)
+
+>> kirim id karena model nya cari id dalam find()
+>> nanti akan di panggil dengan notasi object
+>> karena collection bisa pake array dan objeck
+
+WYSWYG
+WHAT YOU SEE WHAT YOU GET
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p>
+<p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>
+<p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>
+<p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>
+
+
+kalau pake {{}} maka laravel akan mengaman kan script variable kita
+
+kalau ada html nya maka di htmlspeasial karakter
+
+tidak di escape
+{!! $post->body !!}
+
+bisa pake create nanti form post ke sini
+laravel gak boleh banyak properti di isi
+atasi boleh field apa ajah yang boleh di isi
+
+$post::create([
+                'title' => 'Judul Ke Satu',
+                'slug' => 'Judul-Ke-Satu',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
+            
+$post::create([
+                'title' => 'Judul Ke Dua',
+                'slug' => 'Judul-Ke-Dua',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
+$post::create([
+                'title' => 'Judul Ke Tiga',
+                'slug' => 'Judul-Ke-Tiga',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
+$post::create([
+                'title' => 'Judul Ke Empat',
+                'slug' => 'Judul-Ke-Empat',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
+
+
+Post::find(3)->update([
+        'title' => 'Judul Ke Tiga Berubah'
+    ])
+
+ubah berdasarkan where title akan mengembalika berapa baris yang kerubah
+
+
+$post->where('title', 'Judul Ke Tiga Berubah')->update([
+        'excerpt'=> 'excerpt berubah'
+    ])
+
+
+ROUTE MODEL BINDING
+
+// ketika pada menyuntikkan id pada route atau controller
+kirim kan id terus query cari id yang berapa
+
+skip cara yang id
+tanpa kirim kan id mengamblika  instace nya sesuai 
+
+
+kirim instace model dalam argument kirim type hinting type data
+Model yang nama nya user 
+users/{user}', functon (User $user){
+
+}
+
+method
+udah di ikat dengan model Post
+show(Post $post){
+	$data  =$post
+}
+
+variable nama harus sesuai dengan variable yang di terima
+
+// biar gak di tebak pake id
 
 
 
