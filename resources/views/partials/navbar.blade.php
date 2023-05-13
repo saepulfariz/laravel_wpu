@@ -18,6 +18,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::segment(1) == 'posts' ? 'active' : '' }}" href="/posts">Blog</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::segment(1) == 'categories' ? 'active' : '' }}"
+                        href="/categories">Categories</a>
+                </li>
             </ul>
 
         </div>

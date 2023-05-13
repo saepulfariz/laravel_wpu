@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            // biar relasi ke category
+            $table->foreignId('category_id');
             $table->string('title');
             // slug gak boleh ada yang sama
             $table->string('slug')->unique();

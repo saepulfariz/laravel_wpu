@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,26 @@ Route::get('/posts', [PostController::class, 'Index']);
 // kalau tulis post ajah maka akan cari uniq id 
 // Route::get('/posts/{post}', [PostController::class, 'Show']);
 Route::get('/posts/{post:slug}', [PostController::class, 'Show']);
+
+// route model binding
+// clouser dulu tanpa controller
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category', [
+        'title' => $category->name,
+
+        // ini kebalikan yang tadi 
+        'posts' => $category->posts,
+        'category' => $category->name,
+    ]);
+});
+
+
+Route::get('/categories', function (Category $category) {
+    return view('categories', [
+        'title' => 'Post Categories',
+        'categories' => Category::all(),
+    ]);
+});
 
 
 Route::get('/welcome', function () {

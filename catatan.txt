@@ -226,9 +226,184 @@ variable nama harus sesuai dengan variable yang di terima
 // biar gak di tebak pake id
 
 
++++++++++++++++++++++++
+8. Post Category
+php artisan make:model -m Category
+
+
+>> bikin foreingn key di migration posts
+
+isi dengan php tinker
+$category = new \App\Models\Category()
+
+$category->create([
+    'name' => 'Programming',
+    'slug' => 'programming'
+])
+
+$category->create([
+    'name' => 'Web Desain',
+    'slug' => 'web-desain'
+])
+
+
+$category->create([
+    'name' => 'Personal',
+    'slug' => 'personal'
+])
+
+
+mass assigment
+gegara protected fill model
+
+>> isi post dengan konek secara manual id category nya
+
+$post = new \App\Models\Post()
+
+$post::create([
+                'title' => 'Judul Ke Satu',
+                'category_id' => 1,
+                'slug' => 'Judul-Ke-Satu',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
+            
+$post::create([
+                'title' => 'Judul Ke Dua',
+                'category_id' => 1,
+                'slug' => 'Judul-Ke-Dua',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
+$post::create([
+                'title' => 'Judul Ke Tiga',
+                'category_id' => 2,
+                'slug' => 'Judul-Ke-Tiga',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
+$post::create([
+                'title' => 'Judul Ke Empat',
+                'category_id' => 3,
+                'slug' => 'Judul-Ke-Empat',
+                'excerpt' => 'Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum ',
+                'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis dolorem, nobis odio a porro animi fuga atque repellat veritatis excepturi sit illo voluptatem blanditiis, iure facilis ullam dolor sint eius, consequuntur asperiores omnis numquam incidunt laudantium? Quisquam pariatur numquam, vel rerum, totam incidunt minima hic iusto ut harum perspiciatis ex deserunt eum facilis eligendi culpa adipisci autem.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p><p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p> <p>Dicta sit quia ratione minus quo voluptatem aspernatur dignissimos, accusamus saepe maiores itaque amet ex mollitia voluptas doloribus debitis quibusdam officia cumque! Perspiciatis, nulla laborum! Dignissimos error, recusandae, sapiente id dolorum perferendis soluta in maiores, corporis laudantium nihil repudiandae? Nisi, voluptas quo.</p>'
+            ])
 
 
 
 
+relasi post bisa dengan user atau comment
+Eloquent bisa memudahkan relasi umumn
 
 
+menambahkan data definition dengan foreign key
+selalu membaca dari yang menitipkan foreign key nya
+table categories berelasi di table posts
+
+
+tentukan kardinalitas nya 
+one to one
+one to many
+
+1 kategori bisa banyak posts
+1 to n
+
+punya kebalikan 
+kalau di Eloquent inverse relation ship
+
+1 post hanya bisa punya 1 kategori
+kalau mau banyak bisa pake TAG
+
+1 to 1
+1 post dimilii 1 kategori
+
+
+kalau pake Eloquent
+
+categories hasMany Posts
+// 1 kategori 
+
+1 post belongsTo kategori
+// 1 post 1 kategori
+
+
+relasi utama nya adalah categories makannya dia punya 
+hasMany
+
+kalau kategori ke post 
+1 ke 1 
+bisa tulis hasOne
+
+kalau post ke kategori
+1 ke banyak
+belongsToMany
+
+
+// posts ke table user
+maka titipkan foreign key user_id
+versi penulisan nya 
+singular dari nama table nya
+
+singular_id
+user_id
+
+Posts ke users
+1 ke 1
+1 postingan hanya bisa oleh 1 user
+
+users ke posts
+1 user bisa memiliki banyak
+
+
+tebak relasi nya
+one posts belongsTo users
+
+one users hasMany Posts
+
+itu istilah
+
+kasus 3
+kita ada comments
+yang nitipkan di table comments ada dua
+post_id dan user_id
+
+1 post punya banyak comments
+one posts hasMany comments
+
+one comment belongsTo post
+karena 1 comment pasti ada di 1 post
+meski tulisan nya sama pasti beda id
+
+
+1 comment belongsTo users
+1 comment pasti di tulis 1 user
+
+one users hasMany comment
+1 user bisa nulis in beberapa comment
+
+bikin method sesuai dengan table category
+
+Post.php Model
+ public function category()
+    {
+        // karena 1 post bisa 1 kategori
+        return $this->belongsTo(Category::class);
+    }
+
+$post = new \App\Models\Post()
+$post->first()->category
+
+
+$post = \App\Models\Post::first();
+$post->category
+$post->category->name
+
+ini Eloquent yang melakukan nya
+
+Category.php Model
+public function posts()
+{
+    // 1 kategori bisa banyak post
+    return $this->hasMany(Post::class);
+}

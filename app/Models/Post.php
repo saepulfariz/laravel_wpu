@@ -33,4 +33,10 @@ class Post extends Model
     // $post->where('title', 'Judul Ke Tiga Berubah')->update([
     //     'excerpt'=> 'excerpt berubah'
     // ])
+
+    public function category()
+    {
+        // karena 1 post bisa 1 kategori
+        return $this->belongsTo(Category::class);
+    }
 }
