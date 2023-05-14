@@ -39,4 +39,13 @@ class Post extends Model
         // karena 1 post bisa 1 kategori
         return $this->belongsTo(Category::class);
     }
+
+    // nama method harus sesuai dengan model
+    public function user()
+    {
+        // 1 post 1 user
+        return $this->belongsTo(User::class, 'user_id', 'id');
+        // bisa custom default pake gitu
+        // select * from `users` where `users`.`id_user` = 1 limit 1
+    }
 }

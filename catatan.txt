@@ -407,3 +407,35 @@ public function posts()
     // 1 kategori bisa banyak post
     return $this->hasMany(Post::class);
 }
+
+
+
++++++++++++++++++++++++++++
+
+9. Database Seeder
+
+Laravel bisa seed dengan database seed
+
+di simpen database/seeders
+
+default 
+DatabaseSeeder.php
+
+php artisan db:seed
+
+php artisan make:seeder 
+
+kalau seed dua kali gak bisa karena ada yang uniq data nya
+
+php artisan migrate:fresh --seed
+// sekalian dengan seed database nya
+
+
+// nama method harus sesuai dengan model
+public function user()
+{
+    // 1 post 1 user
+    return $this->belongsTo(User::class, 'user_id', 'id');
+    // bisa custom default pake gitu
+    // select * from `users` where `users`.`id_user` = 1 limit 1
+}
