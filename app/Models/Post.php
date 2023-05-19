@@ -48,4 +48,13 @@ class Post extends Model
         // bisa custom default pake gitu
         // select * from `users` where `users`.`id_user` = 1 limit 1
     }
+
+    // relasi custom dengan nama author beda dengan nama model
+    public function author()
+    {
+        // 1 post 1 user
+        return $this->belongsTo(User::class, 'user_id');
+        // bisa custom default pake gitu
+        // select * from `users` where `users`.`id_user` = 1 limit 1
+    }
 }

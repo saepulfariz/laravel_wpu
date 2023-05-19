@@ -439,3 +439,65 @@ public function user()
     // bisa custom default pake gitu
     // select * from `users` where `users`.`id_user` = 1 limit 1
 }
+
+
++++++++++++++++++++++++++++++++
+10 Factory & faker
+
+ubah bahasa ke indonesia faker
+
+Config/App.php
+'faker_locale' => env('FAKER_LOCALE', 'en_US'),
+
+bikin di env
+
+FAKER_LOCALE=id_ID
+
+
+di seed
+\App\Models\User::factory(5)->create();
+
+php artisan migrate:fresh --seed
+maka user nya akan ada nama indonesia 5 random
+
+php artisan make:factory PostFactory
+php artisan make:model Student -mfs
+-m migrate 
+-f factory
+-s seeder
+
+
+Method Definition buat deklare nya
+
+public function definition(): array
+{
+    return [
+        // kalimat random, dengan random angka minimal 2 max 8
+        'title' => fake()->sentence(mt_rand(2, 8)),
+        'slug' => fake()->slug(),
+        'excerpt' => fake()->paragraph(),
+        'body' => fake()->paragraph(mt_rand(10, 20)),
+        // buat random user post dan kategori
+        'user_id' => mt_rand(1, 3),
+        'category_id' => mt_rand(1, 2),
+    ];
+}
+
+tampilkan data yang terbaru
+PostController
+
+Post:latest()->get();
+
+php artisan db:seed 
+buat seed doank
+
+detail siapa ajah postingan user
+
+// relasi custom dengan nama author beda dengan nama model
+public function author()
+{
+    // 1 post 1 user
+    return $this->belongsTo(User::class, 'user_id');
+    // bisa custom default pake gitu
+    // select * from `users` where `users`.`id_user` = 1 limit 1
+}
