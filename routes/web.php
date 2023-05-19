@@ -47,12 +47,11 @@ Route::get('/posts/{post:slug}', [PostController::class, 'Show']);
 // route model binding
 // clouser dulu tanpa controller
 Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
-        'title' => $category->name,
+    return view('posts', [
+        'title' => "Post by Category : $category->name",
 
         // ini kebalikan yang tadi 
-        'posts' => $category->posts,
-        'category' => $category->name,
+        'posts' => $category->posts->load('category', 'author'),
     ]);
 });
 
@@ -64,10 +63,11 @@ Route::get('/categories', function (Category $category) {
     ]);
 });
 
-Route::get('/authors/{user:username}', function (User $user) {
+Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
-        'title' => 'User Posts',
-        'posts' => $user->post,
+        'title' => 'Pots By Author : ' . $author->name,
+        // lazy eager loading
+        'posts' => $author->post->load('category', 'author'),
     ]);
 });
 

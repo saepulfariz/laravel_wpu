@@ -501,3 +501,57 @@ public function author()
     // bisa custom default pake gitu
     // select * from `users` where `users`.`id_user` = 1 limit 1
 }
+
+
++++++++++++++++++++++++
+11_N+1_Problem
+
+Ketika data udah banyak 1000 post maka akan lemot
+
+akan pake view post
+category di ganti
+
+karena tiap looping ada 3 query
+ambil post
+cari kategori
+cari user
+
+Ketahui query
+composer require itsgoingd/clockwork
+
+install extention
+https://github.com/itsgoingd/clockwork
+
+https://chrome.google.com/webstore/detail/clockwork/dmggabnehkmmfmdffgajcflpdjlnoemp/related
+
+ke inspect tool, 
+clockwork
+>> bagian database
+
+
+males lakuin ketika males
+>> lzay loading
+
+
+>>Eager loading
+Untuk menghindari N+1 
+ketika pake relation belongsTo Atau hasMany
+
+dengan nambahin with agar query 26 jadi 2 ajah
+
+// table apa ajah yang di tambah in
+Book::with('author')->get();
+
+kalau dua pake array
+Book::with(['author', 'category'])->get();
+
+kalau di refresh jadi 3 kategori
+
+kalau di routes author di web.php
+route binding
+pake lazy eager loading
+
+// lazy eager loading
+'posts' => $author->post->load('category', 'author'),
+
+asal 22 query jadi 4 query
